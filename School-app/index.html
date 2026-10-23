@@ -3,377 +3,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Sergeli Tuman Ixtisoslashtirilgan Maktabi — Raqamli Platforma</title>
-<!-- Logo saqlangan ochiq havola orqali -->
-<link rel="icon" href="https://i.postimg.co/N0L8kL2K/logo.png" type="image/png">
+<title>Sergeli Tuman Ixtisoslashtirilgan Maktabi — Raqamli Ekotizim</title>
+
+<!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
 <style>
 :root {
-  --primary: #15305f;
-  --accent-teal: #1aa59f;
-  --accent-gold: #f2b230;
-  --accent-blue: #3b82f6;
-  --accent-purple: #8b5cf6;
-  --bg-dark: #0b132b;
-  --card-bg: rgba(255, 255, 255, 0.04);
-  --card-border: rgba(255, 255, 255, 0.1);
+  --bg-main: #050811;
+  --bg-card: rgba(15, 23, 42, 0.65);
+  --border-glow: rgba(56, 189, 248, 0.25);
+  --teal-glow: #00f2fe;
+  --blue-glow: #4facfe;
+  --purple-glow: #7000ff;
+  --gold-glow: #ffb703;
   --text-main: #f8fafc;
-  --text-sub: #94a3b8;
-  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --text-muted: #94a3b8;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-main); scroll-behavior: smooth; }
+* { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
 body {
-  background: var(--bg-dark);
+  background-color: var(--bg-main);
   color: var(--text-main);
+  font-family: var(--font-body);
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Fon Glow Animatsiyalari */
-.bg-glow {
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(140px);
-  opacity: 0.3;
-  z-index: 0;
-  pointer-events: none;
-  animation: floatGlow 12s infinite alternate ease-in-out;
+/* Dynamic Interactive Grid Background */
+.bg-grid {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 0);
+  background-size: 32px 32px;
+  z-index: 0; pointer-events: none;
 }
-.glow-1 { top: -100px; left: -100px; background: #1aa59f; }
-.glow-2 { bottom: -100px; right: -100px; background: #3b82f6; animation-delay: -6s; }
-.glow-3 { top: 40%; left: 50%; transform: translate(-50%, -50%); background: #8b5cf6; opacity: 0.15; }
 
-@keyframes floatGlow {
+/* Glowing Neon Orbs */
+.glow-orb {
+  position: fixed; border-radius: 50%; filter: blur(130px); pointer-events: none; z-index: 0; opacity: 0.35;
+  animation: floatOrb 15s infinite alternate ease-in-out;
+}
+.orb-1 { width: 600px; height: 600px; top: -150px; left: -100px; background: linear-gradient(135deg, var(--teal-glow), var(--blue-glow)); }
+.orb-2 { width: 500px; height: 500px; bottom: -100px; right: -50px; background: linear-gradient(135deg, var(--purple-glow), var(--blue-glow)); animation-delay: -7s; }
+
+@keyframes floatOrb {
   0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(50px, 30px) scale(1.1); }
+  100% { transform: translate(80px, 50px) scale(1.15); }
 }
 
-/* Header Navbar */
+/* Glassmorphic Header */
 header {
-  position: sticky; top: 0; z-index: 50;
-  padding: 1rem 2rem;
-  background: rgba(11, 19, 43, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--card-border);
+  position: sticky; top: 0; z-index: 100;
+  padding: 1.2rem 3rem;
+  background: rgba(5, 8, 17, 0.7);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex; align-items: center; justify-content: space-between;
 }
 
-.brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: #fff; }
-.brand-img {
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: #fff;
-  padding: 2px;
-  box-shadow: 0 0 20px rgba(26, 165, 159, 0.4);
-  transition: transform 0.4s ease;
+.brand { display: flex; align-items: center; gap: 1.2rem; text-decoration: none; color: #fff; }
+
+.brand-logo-wrapper {
+  position: relative; width: 56px; height: 56px; border-radius: 50%; padding: 2px;
+  background: linear-gradient(135deg, var(--teal-glow), var(--purple-glow));
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
 }
-.brand:hover .brand-img { transform: rotate(360deg) scale(1.05); }
-.brand-text h1 {
-  font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2;
-  background: linear-gradient(135deg, #fff 30%, var(--accent-teal));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.brand-text span {
-  font-size: 0.72rem; color: var(--accent-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+.brand-logo {
+  width: 100%; height: 100%; border-radius: 50%; background: #fff;
+  object-fit: contain; display: block;
 }
 
-.nav-btn {
-  padding: 0.6rem 1.4rem; border-radius: 99px;
-  background: linear-gradient(135deg, var(--accent-teal), #0d9488);
-  color: #fff; font-weight: 700; text-decoration: none; font-size: 0.9rem;
-  box-shadow: 0 4px 15px rgba(26, 165, 159, 0.3); transition: all 0.3s ease;
+.brand-info h1 {
+  font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700;
+  background: linear-gradient(90deg, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1.1;
 }
-.nav-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26, 165, 159, 0.5); }
+.brand-info span {
+  font-size: 0.72rem; color: var(--gold-glow); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+}
 
-/* Hero Section (Reklama Boshlanishi) */
+.header-cta {
+  padding: 0.75rem 1.8rem; border-radius: 99px; font-weight: 700; font-size: 0.9rem;
+  color: #fff; text-decoration: none;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.header-cta:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 30px rgba(0, 242, 254, 0.6); }
+
+/* Hero Section */
 .hero {
-  position: relative; z-index: 1;
-  text-align: center;
-  padding: 5rem 1.5rem 3rem;
-  max-width: 950px; margin: 0 auto;
+  position: relative; z-index: 2; text-align: center;
+  padding: 6rem 1.5rem 4rem; max-width: 1100px; margin: 0 auto;
 }
-.badge {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.5rem 1.2rem; border-radius: 99px;
-  background: rgba(26, 165, 159, 0.12);
-  border: 1px solid rgba(26, 165, 159, 0.3);
-  color: var(--accent-teal); font-size: 0.88rem; font-weight: 700;
-  margin-bottom: 1.8rem;
-  animation: fadeInDown 0.8s ease;
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.5rem 1.4rem; border-radius: 99px;
+  background: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.25);
+  color: var(--teal-glow); font-size: 0.85rem; font-weight: 700;
+  margin-bottom: 2rem; backdrop-filter: blur(10px);
 }
+
 .hero h2 {
-  font-size: clamp(2.3rem, 5vw, 4rem);
-  font-weight: 800; line-height: 1.15;
-  margin-bottom: 1.4rem;
-  letter-spacing: -0.03em;
-  animation: fadeInUp 0.8s ease;
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em;
 }
-.hero h2 span {
-  background: linear-gradient(135deg, #1aa59f, #3b82f6);
+.hero h2 .gradient-text {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7000ff 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
+
 .hero p {
-  font-size: 1.15rem; color: var(--text-sub); line-height: 1.7; max-width: 720px; margin: 0 auto 2.5rem;
-  animation: fadeInUp 1s ease;
+  font-size: 1.2rem; color: var(--text-muted); line-height: 1.7; max-width: 780px; margin: 0 auto 3rem;
 }
 
-.hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-
-/* Features Section (Ilova nimalar qila oladi) */
-.features-section {
-  position: relative; z-index: 1;
-  max-width: 1150px; margin: 3rem auto; padding: 0 1.5rem;
+/* Features Showcase Grid */
+.features-container {
+  position: relative; z-index: 2; max-width: 1200px; margin: 2rem auto 6rem; padding: 0 1.5rem;
 }
-.section-title {
-  text-align: center; margin-bottom: 3rem;
-}
-.section-title h3 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
-.section-title p { color: var(--text-sub); font-size: 1rem; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header h3 { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; margin-bottom: 0.8rem; }
+.section-header p { color: var(--text-muted); font-size: 1.05rem; }
 
 .features-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem;
 }
 
-.feature-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 20px; padding: 2rem;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
+.f-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px; padding: 2.2rem;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s ease; position: relative; overflow: hidden;
 }
-.feature-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(26, 165, 159, 0.4);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-}
-.feature-icon {
-  width: 50px; height: 50px; border-radius: 14px;
-  background: rgba(26, 165, 159, 0.15); color: var(--accent-teal);
-  display: grid; place-items: center; margin-bottom: 1.2rem;
-}
-.feature-card h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
-.feature-card p { font-size: 0.92rem; color: var(--text-sub); line-height: 1.5; }
-
-/* Statistics Counter */
-.stats-container {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem; max-width: 1000px; margin: 4rem auto; padding: 0 1.5rem; text-align: center;
-}
-.stat-item {
-  background: rgba(255, 255, 255, 0.02); border: 1px solid var(--card-border);
-  padding: 1.8rem; border-radius: 18px;
-}
-.stat-number { font-size: 2.5rem; font-weight: 800; color: var(--accent-teal); margin-bottom: 0.3rem; }
-.stat-label { font-size: 0.88rem; color: var(--text-sub); font-weight: 600; }
-
-/* Login Sections (Kirish Bo'limi) */
-.login-section {
-  position: relative; z-index: 1;
-  max-width: 1150px; margin: 4rem auto 6rem; padding: 0 1.5rem;
-}
-
-.login-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 24px; padding: 2.2rem 1.8rem;
-  display: flex; flex-direction: column; justify-content: space-between;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  transition: all 0.4s ease;
-  position: relative; overflow: hidden;
-}
-
-.card:hover {
+.f-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: var(--border-glow);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.15);
 }
 
-.card-icon {
-  width: 64px; height: 64px; border-radius: 18px;
-  display: grid; place-items: center; margin-bottom: 1.5rem; color: #fff;
+.f-icon-box {
+  width: 60px; height: 60px; border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(112, 0, 255, 0.15));
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  display: grid; place-items: center; color: var(--teal-glow); margin-bottom: 1.5rem;
 }
-.student .card-icon { background: linear-gradient(135deg, #1aa59f, #0d9488); }
-.teacher .card-icon { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
-.admin .card-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
 
-.card h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; color: #fff; }
-.card p { font-size: 0.92rem; color: var(--text-sub); line-height: 1.5; margin-bottom: 2rem; }
+.f-card h4 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.8rem; color: #fff; }
+.f-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
-.btn {
-  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
-  width: 100%; padding: 0.9rem; border-radius: 14px; border: none;
-  font-size: 1rem; font-weight: 700; color: #fff; text-decoration: none;
-  transition: all 0.3s ease; box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+/* Interactive Stats */
+.stats-banner {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto 6rem; padding: 0 1.5rem;
 }
-.student .btn { background: linear-gradient(135deg, #1aa59f, #0f766e); }
-.teacher .btn { background: linear-gradient(135deg, #3b82f6, #1e40af); }
-.admin .btn { background: linear-gradient(135deg, #f59e0b, #b45309); }
+.stats-glass {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px; padding: 3rem 2rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;
+  backdrop-filter: blur(20px); text-align: center;
+}
+.stat-num {
+  font-family: var(--font-heading); font-size: 3rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--teal-glow), var(--blue-glow));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.4rem;
+}
+.stat-desc { color: var(--text-muted); font-weight: 600; font-size: 0.95rem; }
 
-.btn:hover { filter: brightness(1.15); transform: translateY(-2px); }
+/* Login Portal Cards Section */
+.portal-section {
+  position: relative; z-index: 2; max-width: 1200px; margin: 0 auto 8rem; padding: 0 1.5rem;
+}
 
-/* Keyframes */
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.portal-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;
+}
+
+.p-card {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.4) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px; padding: 2.5rem 2rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  backdrop-filter: blur(20px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.p-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.p-card.student:hover { border-color: #00f2fe; box-shadow: 0 0 35px rgba(0, 242, 254, 0.25); }
+.p-card.teacher:hover { border-color: #3b82f6; box-shadow: 0 0 35px rgba(59, 130, 246, 0.25); }
+.p-card.admin:hover { border-color: #ffb703; box-shadow: 0 0 35px rgba(255, 183, 3, 0.25); }
+
+.p-icon {
+  width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center;
+  margin-bottom: 1.5rem; color: #fff;
+}
+.student .p-icon { background: linear-gradient(135deg, #00f2fe, #00a8ff); }
+.teacher .p-icon { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.admin .p-icon { background: linear-gradient(135deg, #ffb703, #d97706); }
+
+.p-card h4 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.6rem; color: #fff; }
+.p-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; }
+
+.p-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+  padding: 1rem; border-radius: 16px; text-decoration: none; font-weight: 700; font-size: 1rem;
+  color: #fff; transition: all 0.3s ease;
+}
+.student .p-btn { background: linear-gradient(135deg, #00f2fe, #0097e6); }
+.teacher .p-btn { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+.admin .p-btn { background: linear-gradient(135deg, #ffb703, #b45309); }
+
+.p-btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  header { padding: 1rem 1.5rem; }
+  .hero { padding: 4rem 1rem 2rem; }
+  .portal-grid { grid-template-columns: 1fr; }
+}
 
 footer {
-  padding: 2rem; border-top: 1px solid var(--card-border);
-  text-align: center; color: var(--text-sub); font-size: 0.9rem;
-  background: rgba(11, 19, 43, 0.95);
+  position: relative; z-index: 2; padding: 2.5rem; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08); color: var(--text-muted); font-size: 0.9rem;
+  background: rgba(5, 8, 17, 0.95);
 }
 </style>
 </head>
 <body>
 
-<div class="bg-glow glow-1"></div>
-<div class="bg-glow glow-2"></div>
-<div class="bg-glow glow-3"></div>
+<div class="bg-grid"></div>
+<div class="glow-orb orb-1"></div>
+<div class="glow-orb orb-2"></div>
 
+<!-- HEADER NAVBAR -->
 <header>
   <a href="#" class="brand">
-    <!-- Tayyor va ochiq saqlangan rasmiy logo linki -->
-    <img src="https://i.postimg.co/N0L8kL2K/logo.png" alt="Sergeli Maktab Logosi" class="brand-img">
-    <div class="brand-text">
+    <div class="brand-logo-wrapper">
+      <!-- To'g'ridan-to'g'ri vektor Logo (Xatosiz yuklanadi va 100% ishlaydi) -->
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23ffffff' stroke='%231aa59f' stroke-width='4'/><circle cx='50' cy='50' r='40' fill='none' stroke='%23ef4444' stroke-width='2'/><path d='M30 65 C 30 40, 70 40, 70 65 Z' fill='none' stroke='%2315305f' stroke-width='4'/><polygon points='50,20 65,35 35,35' fill='%2315305f'/><circle cx='50' cy='45' r='10' fill='%23f2b230'/></svg>" alt="Maktab Logosi" class="brand-logo">
+    </div>
+    <div class="brand-info">
       <h1>Sergeli Tuman</h1>
       <span>Ixtisoslashtirilgan Maktabi</span>
     </div>
   </a>
-  <a href="#login" class="nav-btn">Tizimga Kirish</a>
+  <a href="#portals" class="header-cta">Tizimga Kirish</a>
 </header>
 
-<!-- REKLAMA / HERO BO'LIMI -->
+<!-- HERO REKLAMA SECTION -->
 <section class="hero">
-  <div class="badge">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    Raqamli Ta'lim Inqilobi
+  <div class="hero-pill">
+    <i data-lucide="sparkles"></i>
+    <span>Raqamli Ta'limning Yangi Davri</span>
   </div>
-  <h2>Zamonaviy Maktab uchun <span>Aqlli Boshqaruv</span> Ilovasi</h2>
-  <p>Sergeli tuman ixtisoslashtirilgan maktabining barcha o'quv, ma'muriy va ta'lim jarayonlarini bitta platformada birlashtirgan rasmiy mobil va veb-ilova.</p>
-  <div class="hero-actions">
-    <a href="#login" class="nav-btn" style="padding: 0.9rem 2rem; font-size: 1rem;">Kabinetga O'tish</a>
-  </div>
+  <h2>Ta'lim va Boshqaruvni Birlashtiruvchi <span class="gradient-text">Ekointellekt Platformasi</span></h2>
+  <p>O'quvchilar kamoloti, o'qituvchilar samaradorligi hamda maktab ma'muriyatining shaffof faoliyatini ta'minlovchi ultra-zamonaviy raqamli tizim.</p>
 </section>
 
-<!-- ILOVA IMKONIYATLARI (REKLAMA) -->
-<section class="features-section">
-  <div class="section-title">
-    <h3>Ilova Nimalarga Qodir?</h3>
-    <p>O'quvchilar, o'qituvchilar va ota-onalar uchun yaratilgan qulayliklar</p>
+<!-- FEATURES REKLAMA SECTION -->
+<section class="features-container">
+  <div class="section-header">
+    <h3>Ilova Imkoniyatlari va Qulayliklari</h3>
+    <p>Har bir foydalanuvchi uchun alohida moslashtirilgan aqlli funksiyalar</p>
   </div>
 
   <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </div>
-      <h4>Elektron Jurnal</h4>
-      <p>O'quvchilar kunlik baholarni, dars qoldirishlarni va uy vazifalarini real-vaqt rejimida kuzatib boradilar.</p>
+    <div class="f-card">
+      <div class="f-icon-box"><i data-lucide="book-open-check"></i></div>
+      <h4>Elektron Kundalik & Jurnal</h4>
+      <p>Real-vaqt rejimida yangilanuvchi baholash, davomat nazorati va uy vazifalarining avtomatlashtirilgan hisobi.</p>
     </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <h4>Aqlli Dars Jadvali</h4>
-      <p>Sinflar va o'qituvchilar uchun moslashuvchan dars jadvali hamda o'zgarishlar haqida tezkor bildirishnomalar.</p>
+    <div class="f-card">
+      <div class="f-icon-box"><i data-lucide="calendar-range"></i></div>
+      <h4>Interaktiv Dars Jadvali</h4>
+      <p>Sinflar va o'qituvchilar uchun xonalarni inobatga olgan holda tuzilgan aqlli va o'zgarmas jadval tizimi.</p>
     </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
-      </div>
-      <h4>Reyting va Analitika</h4>
-      <p>O'quvchilarning umumiy o'zlashtirish grafikasi, sinflar o'rtasidagi musobaqa va maktab reytingi.</p>
+    <div class="f-card">
+      <div class="f-icon-box"><i data-lucide="trending-up"></i></div>
+      <h4>Reyting & Analitika</h4>
+      <p>O'quvchilarning umumiy o'zlashtirish va fanlar bo'yicha o'sish ko'rsatkichlarini vizual grafiklarda tahlil qilish.</p>
     </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-      </div>
-      <h4>PWA Mobil Tizim</h4>
-      <p>Ilovani kompyuter va telefonga o'rnatib olish hamda internetsiz ham asosiy ma'lumotlarni ko'rish imkoniyati.</p>
+    <div class="f-card">
+      <div class="f-icon-box"><i data-lucide="smartphone"></i></div>
+      <h4>Cross-Platform & PWA</h4>
+      <p>Telefon, planshet hamda kompyuterlarda ilova ko'rinishida birdek tez va internetsiz ham uzluksiz ishlash imkoniyati.</p>
     </div>
   </div>
 </section>
 
-<!-- MAKTAB STATISTIKASI -->
-<div class="stats-container">
-  <div class="stat-item">
-    <div class="stat-number">1000+</div>
-    <div class="stat-label">O'quvchilar</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">80+</div>
-    <div class="stat-label">O'qituvchilar</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">100%</div>
-    <div class="stat-label">Raqamlashtirilgan Tizim</div>
+<!-- STATS -->
+<div class="stats-banner">
+  <div class="stats-glass">
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-desc">Shaffof Baholash Tizimi</div>
+    </div>
+    <div>
+      <div class="stat-num">1200+</div>
+      <div class="stat-desc">Aktiv O'quvchilar</div>
+    </div>
+    <div>
+      <div class="stat-num">24/7</div>
+      <div class="stat-desc">Tizim Barqarorligi</div>
+    </div>
   </div>
 </div>
 
-<!-- TIZIMGA KIRISH (LOGIN) BO'LIMI -->
-<section class="login-section" id="login">
-  <div class="section-title">
-    <h3>Tizimga Kirish</h3>
-    <p>O'z xizmat ko'rsatish kabinetingizni tanlang</p>
+<!-- LOGIN PORTAL SECTIONS (OXIRIDA LOGIN) -->
+<section class="portal-section" id="portals">
+  <div class="section-header">
+    <h3>Tizimga Kirish Portallari</h3>
+    <p>O'z xizmat kabinetingiz orqali platformadan foydalanishni boshlang</p>
   </div>
 
-  <div class="login-grid">
+  <div class="portal-grid">
 
     <!-- O'QUVCHI & OTA-ONA -->
-    <div class="card student">
+    <div class="p-card student">
       <div>
-        <div class="card-icon">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <h3>O'quvchi & Ota-ona</h3>
-        <p>Shaxsiy baholar, qoldirilgan darslar va kunlik jadvallarni ko'rish bo'limi.</p>
+        <div class="p-icon"><i data-lucide="graduation-cap" size="32"></i></div>
+        <h4>O'quvchi & Ota-ona</h4>
+        <p>Baholar, dars jadvallari, davomat hamda sinf reytinglarini kuzatib borish portali.</p>
       </div>
-      <a href="app/index.html" class="btn">
+      <a href="app/index.html" class="p-btn">
         <span>O'quvchi Kabineti</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <i data-lucide="arrow-right"></i>
       </a>
     </div>
 
     <!-- O'QITUVCHI -->
-    <div class="card teacher">
+    <div class="p-card teacher">
       <div>
-        <div class="card-icon">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
-        </div>
-        <h3>O'qituvchilar</h3>
-        <p>Baholash, dars davomati hamda sinf jurnallarini to'ldirish paneli.</p>
+        <div class="p-icon"><i data-lucide="presentation" size="32"></i></div>
+        <h4>O'qituvchilar</h4>
+        <p>Sinf jurnallarini yuritish, baholash hamda o'quv rejalari bilan ishlash paneli.</p>
       </div>
-      <a href="teacher.html" class="btn">
+      <a href="teacher.html" class="p-btn">
         <span>O'qituvchi Kabineti</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <i data-lucide="arrow-right"></i>
       </a>
     </div>
 
     <!-- ADMIN -->
-    <div class="card admin">
+    <div class="p-card admin">
       <div>
-        <div class="card-icon">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </div>
-        <h3>Administratsiya</h3>
-        <p>Foydalanuvchilar, sinflar, dars jadvali va umumiy baza sozlamalari.</p>
+        <div class="p-icon"><i data-lucide="shield-check" size="32"></i></div>
+        <h4>Administratsiya</h4>
+        <p>Maktab tuzilmasi, foydalanuvchilar bazasi hamda tizim sozlamalarini boshqarish.</p>
       </div>
-      <a href="admin.html" class="btn">
+      <a href="admin.html" class="p-btn">
         <span>Admin Paneli</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <i data-lucide="arrow-right"></i>
       </a>
     </div>
 
@@ -384,5 +380,9 @@ footer {
   <p>© 2026 Sergeli Tuman Ixtisoslashtirilgan Maktabi. Barcha huquqlar himoyalangan.</p>
 </footer>
 
+<script>
+  // Lucide belgilarni faollashtirish
+  lucide.createIcons();
+</script>
 </body>
 </html>
