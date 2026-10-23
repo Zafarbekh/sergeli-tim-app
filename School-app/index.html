@@ -2,13 +2,13 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Sergeli TIM — Rasmiy Ta'lim Portali</title>
 
 <!-- Fonts & Icons -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
@@ -21,222 +21,213 @@
   --accent-gold: #fbbf24;
   --text-main: #f8fafc;
   --text-sub: #94a3b8;
-  --border-glow: rgba(0, 242, 254, 0.2);
   --font-head: 'Space Grotesk', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+* { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
 
-body {
+html, body {
+  width: 100%;
+  overflow-x: hidden;
   background: var(--bg-dark);
   color: var(--text-main);
   font-family: var(--font-body);
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
 }
 
-/* Fon Animatsiyalari */
+/* Dynamic Grid Background */
 .bg-grid {
   position: fixed; inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
-  background-size: 36px 36px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
   z-index: 0; pointer-events: none;
 }
 
 .glow-orb {
-  position: fixed; border-radius: 50%; filter: blur(140px); pointer-events: none; z-index: 0; opacity: 0.3;
-  animation: orbFloat 12s infinite alternate ease-in-out;
+  position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; opacity: 0.25;
 }
-.orb-1 { width: 550px; height: 550px; top: -100px; left: -100px; background: var(--accent-teal); }
-.orb-2 { width: 450px; height: 450px; bottom: -50px; right: -50px; background: var(--accent-purple); animation-delay: -6s; }
-
-@keyframes orbFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(60px, 40px) scale(1.1); }
-}
+.orb-1 { width: 300px; height: 300px; top: -50px; left: -50px; background: var(--accent-teal); }
+.orb-2 { width: 250px; height: 250px; bottom: -50px; right: -50px; background: var(--accent-purple); }
 
 /* Header Navbar */
 header {
   position: sticky; top: 0; z-index: 100;
-  padding: 1rem 2.5rem;
+  padding: 0.8rem 1.2rem;
   background: rgba(4, 8, 20, 0.85);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex; align-items: center; justify-content: space-between;
 }
 
-.brand { display: flex; align-items: center; gap: 1.2rem; text-decoration: none; color: #fff; }
+.brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; color: #fff; }
 
 .logo-container {
-  position: relative; width: 54px; height: 54px; border-radius: 50%; padding: 2px;
+  width: 42px; height: 42px; border-radius: 50%; padding: 2px;
   background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
-  box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
-  transition: transform 0.4s ease;
+  flex-shrink: 0;
 }
-.logo-container:hover { transform: rotate(360deg) scale(1.05); }
 
 .logo-img {
   width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #fff;
 }
 
 .brand-text h1 {
-  font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em;
+  font-family: var(--font-head); font-size: 1rem; font-weight: 700; line-height: 1.1;
   background: linear-gradient(90deg, #fff, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .brand-text span {
-  font-size: 0.7rem; color: var(--accent-gold); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  font-size: 0.65rem; color: var(--accent-gold); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; display: block;
 }
 
-nav { display: flex; gap: 1.5rem; align-items: center; }
-nav a { color: var(--text-sub); text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: 0.3s; }
-nav a:hover { color: var(--accent-teal); }
+nav { display: none; }
 
 .cta-btn {
-  padding: 0.7rem 1.6rem; border-radius: 99px; font-weight: 700; font-size: 0.9rem;
-  color: #fff; text-decoration: none;
-  background: linear-gradient(135deg, #00f2fe, #0097e6);
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3); transition: 0.3s ease;
+  padding: 0.5rem 1.1rem; border-radius: 99px; font-weight: 700; font-size: 0.82rem;
+  color: #fff; text-decoration: none; white-space: nowrap;
+  background: linear-gradient(135deg, #00f2fe, #0080ff);
+  box-shadow: 0 4px 12px rgba(0, 242, 254, 0.25);
 }
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 242, 254, 0.5); }
 
 /* Hero Section */
 .hero {
   position: relative; z-index: 2; text-align: center;
-  padding: 5.5rem 1.5rem 3.5rem; max-width: 1000px; margin: 0 auto;
+  padding: 2.5rem 1.2rem 1.8rem; max-width: 900px; margin: 0 auto;
 }
 
 .badge {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 0.5rem 1.3rem; border-radius: 99px;
-  background: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.3);
-  color: var(--accent-teal); font-size: 0.88rem; font-weight: 700; margin-bottom: 2rem;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.9rem; border-radius: 99px;
+  background: rgba(0, 242, 254, 0.08); border: 1px solid rgba(0, 242, 254, 0.25);
+  color: var(--accent-teal); font-size: 0.78rem; font-weight: 700; margin-bottom: 1.2rem;
 }
 
 .hero h2 {
-  font-family: var(--font-head); font-size: clamp(2.4rem, 5.5vw, 4.5rem);
-  font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem;
+  font-family: var(--font-head); font-size: clamp(1.8rem, 6vw, 3.5rem);
+  font-weight: 700; line-height: 1.2; margin-bottom: 1rem;
 }
 .hero h2 span {
-  background: linear-gradient(135deg, #00f2fe 0%, #3b82f6 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #00f2fe, #3b82f6, #8b5cf6);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
 .hero p {
-  font-size: 1.2rem; color: var(--text-sub); line-height: 1.7; max-width: 750px; margin: 0 auto 2.5rem;
+  font-size: 0.95rem; color: var(--text-sub); line-height: 1.6; max-width: 650px; margin: 0 auto;
 }
 
 /* Live Stats */
 .stats-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem; max-width: 1100px; margin: 0 auto 5rem; padding: 0 1.5rem; position: relative; z-index: 2;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem; max-width: 1000px; margin: 0 auto 3rem; padding: 0 1rem; position: relative; z-index: 2;
 }
 
 .stat-card {
   background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px; padding: 2rem 1.5rem; text-align: center;
-  backdrop-filter: blur(16px); transition: 0.3s;
+  border-radius: 16px; padding: 1.2rem 0.8rem; text-align: center;
+  backdrop-filter: blur(12px);
 }
-.stat-card:hover { transform: translateY(-5px); border-color: var(--accent-teal); }
 .stat-val {
-  font-family: var(--font-head); font-size: 2.8rem; font-weight: 700;
-  color: var(--accent-teal); margin-bottom: 0.3rem;
+  font-family: var(--font-head); font-size: 1.8rem; font-weight: 700;
+  color: var(--accent-teal); margin-bottom: 0.2rem;
 }
-.stat-lbl { color: var(--text-sub); font-size: 0.9rem; font-weight: 600; }
+.stat-lbl { color: var(--text-sub); font-size: 0.78rem; font-weight: 600; }
 
-/* Features & Portal Section */
+/* Features & Section Wrapper */
 .section-wrapper {
-  position: relative; z-index: 2; max-width: 1200px; margin: 0 auto 6rem; padding: 0 1.5rem;
+  position: relative; z-index: 2; max-width: 1100px; margin: 0 auto 4rem; padding: 0 1rem;
 }
 
-.sec-title { text-align: center; margin-bottom: 3.5rem; }
-.sec-title h3 { font-family: var(--font-head); font-size: 2.2rem; font-weight: 700; margin-bottom: 0.6rem; }
-.sec-title p { color: var(--text-sub); font-size: 1rem; }
+.sec-title { text-align: center; margin-bottom: 2rem; }
+.sec-title h3 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.4rem; }
+.sec-title p { color: var(--text-sub); font-size: 0.88rem; }
 
 .features-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.8rem; margin-bottom: 6rem;
+  display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 3.5rem;
 }
 
 .f-card {
   background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 22px; padding: 2rem; backdrop-filter: blur(12px); transition: 0.3s;
+  border-radius: 18px; padding: 1.4rem; backdrop-filter: blur(10px);
 }
-.f-card:hover { transform: translateY(-6px); border-color: var(--accent-teal); box-shadow: 0 15px 30px rgba(0, 242, 254, 0.15); }
 .f-icon {
-  width: 54px; height: 54px; border-radius: 16px; background: rgba(0, 242, 254, 0.12);
-  display: grid; place-items: center; color: var(--accent-teal); margin-bottom: 1.2rem;
+  width: 44px; height: 44px; border-radius: 12px; background: rgba(0, 242, 254, 0.12);
+  display: grid; place-items: center; color: var(--accent-teal); margin-bottom: 1rem;
 }
-.f-card h4 { font-family: var(--font-head); font-size: 1.25rem; margin-bottom: 0.6rem; }
-.f-card p { color: var(--text-sub); font-size: 0.92rem; line-height: 1.6; }
+.f-card h4 { font-family: var(--font-head); font-size: 1.1rem; margin-bottom: 0.4rem; }
+.f-card p { color: var(--text-sub); font-size: 0.88rem; line-height: 1.5; }
 
-/* News & Announcements */
+/* News Section */
 .news-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; margin-bottom: 6rem;
+  display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 3.5rem;
 }
 .news-card {
   background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px; padding: 1.8rem; backdrop-filter: blur(12px);
+  border-radius: 18px; padding: 1.3rem;
 }
 .news-tag {
-  display: inline-block; padding: 0.3rem 0.8rem; border-radius: 99px;
+  display: inline-block; padding: 0.25rem 0.7rem; border-radius: 99px;
   background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);
-  font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem;
+  font-size: 0.72rem; font-weight: 700; margin-bottom: 0.8rem;
 }
-.news-card h4 { font-size: 1.1rem; margin-bottom: 0.6rem; font-family: var(--font-head); }
-.news-card p { color: var(--text-sub); font-size: 0.88rem; line-height: 1.5; }
+.news-card h4 { font-size: 1.05rem; margin-bottom: 0.4rem; font-family: var(--font-head); }
+.news-card p { color: var(--text-sub); font-size: 0.85rem; line-height: 1.5; }
 
 /* Login Portals */
 .portal-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
+  display: grid; grid-template-columns: 1fr; gap: 1.2rem;
 }
 
 .p-card {
-  background: linear-gradient(180deg, rgba(13, 22, 45, 0.9) 0%, rgba(13, 22, 45, 0.5) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 26px; padding: 2.5rem 2rem;
+  background: linear-gradient(180deg, rgba(13, 22, 45, 0.9) 0%, rgba(13, 22, 45, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px; padding: 1.6rem;
   display: flex; flex-direction: column; justify-content: space-between;
-  backdrop-filter: blur(20px); transition: all 0.4s ease;
 }
 
-.p-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); }
-.p-card.student:hover { border-color: var(--accent-teal); }
-.p-card.teacher:hover { border-color: var(--accent-blue); }
-.p-card.admin:hover { border-color: var(--accent-gold); }
-
 .p-icon {
-  width: 60px; height: 60px; border-radius: 18px; display: grid; place-items: center;
-  margin-bottom: 1.5rem; color: #fff;
+  width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center;
+  margin-bottom: 1.2rem; color: #fff;
 }
 .student .p-icon { background: linear-gradient(135deg, #00f2fe, #0097e6); }
 .teacher .p-icon { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
 .admin .p-icon { background: linear-gradient(135deg, #fbbf24, #d97706); }
 
-.p-card h4 { font-family: var(--font-head); font-size: 1.4rem; margin-bottom: 0.6rem; }
-.p-card p { color: var(--text-sub); font-size: 0.92rem; line-height: 1.6; margin-bottom: 2rem; }
+.p-card h4 { font-family: var(--font-head); font-size: 1.25rem; margin-bottom: 0.4rem; }
+.p-card p { color: var(--text-sub); font-size: 0.88rem; line-height: 1.5; margin-bottom: 1.5rem; }
 
 .p-btn {
-  display: flex; align-items: center; justify-content: center; gap: 0.7rem;
-  padding: 1rem; border-radius: 16px; text-decoration: none; font-weight: 700; font-size: 0.98rem;
-  color: #fff; transition: 0.3s ease;
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  padding: 0.85rem; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 0.92rem;
+  color: #fff; transition: 0.2s;
 }
 .student .p-btn { background: linear-gradient(135deg, #00f2fe, #0080ff); }
 .teacher .p-btn { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
 .admin .p-btn { background: linear-gradient(135deg, #fbbf24, #b45309); }
 
-.p-btn:hover { filter: brightness(1.15); transform: translateY(-2px); }
-
-/* Footer */
-footer {
-  position: relative; z-index: 2; padding: 3rem 2rem; text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-sub); font-size: 0.9rem;
-  background: rgba(4, 8, 20, 0.95);
+/* Desktop Media Query */
+@media (min-width: 768px) {
+  header { padding: 1rem 2.5rem; }
+  .logo-container { width: 50px; height: 50px; }
+  .brand-text h1 { font-size: 1.2rem; }
+  .brand-text span { font-size: 0.7rem; }
+  nav { display: flex; gap: 1.5rem; align-items: center; }
+  nav a { color: var(--text-sub); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
+  .cta-btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+  
+  .hero { padding: 5rem 1.5rem 3rem; }
+  .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 5rem; }
+  .stat-card { padding: 1.8rem 1rem; }
+  .stat-val { font-size: 2.6rem; }
+  
+  .features-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .news-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .portal-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .p-card { padding: 2.2rem 1.8rem; }
 }
 
-@media (max-width: 768px) {
-  header { padding: 1rem 1.2rem; }
-  nav { display: none; }
-  .hero { padding: 3.5rem 1rem 2rem; }
+footer {
+  position: relative; z-index: 2; padding: 2rem 1rem; text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08); color: var(--text-sub); font-size: 0.82rem;
+  background: rgba(4, 8, 20, 0.95);
 }
 </style>
 </head>
@@ -250,7 +241,6 @@ footer {
 <header>
   <a href="#" class="brand">
     <div class="logo-container">
-      <!-- Original Sergeli TIM Logo (Siz yuborgan rasmiy logo kiritildi) -->
       <img src="logo.png" alt="Sergeli TIM Logosi" class="logo-img" onerror="this.src='https://i.postimg.co/N0L8kL2K/logo.png'">
     </div>
     <div class="brand-text">
@@ -272,11 +262,11 @@ footer {
 <!-- HERO -->
 <section class="hero" id="about">
   <div class="badge">
-    <i data-lucide="shield-check"></i>
-    <span>Sergeli Tuman Ixtisoslashtirilgan Maktabi Rasmiy Portali</span>
+    <i data-lucide="shield-check" size="14"></i>
+    <span>Sergeli TIM Rasmiy Portali</span>
   </div>
   <h2>Zamonaviy Ta'lim va <span>Aqlli Boshqaruv</span> Ekotizimi</h2>
-  <p>541 nafar iqtidorli o'quvchilar, malakali pedagoglar va ota-onalar uchun mo'ljallangan yagona raqamli platforma.</p>
+  <p>541 nafar iqtidorli o'quvchilar, malakali pedagoglar hamda ota-onalar uchun mo'ljallangan yagona raqamli platforma.</p>
 </section>
 
 <!-- LIVE STATS -->
@@ -303,30 +293,30 @@ footer {
 <section class="section-wrapper" id="features">
   <div class="sec-title">
     <h3>Platforma Qulayliklari</h3>
-    <p>O'quv jarayonini soddalashtiruvchi va samaradorlikni oshiruvchi xizmatlar</p>
+    <p>O'quv jarayonini soddalashtiruvchi xizmatlar</p>
   </div>
 
   <div class="features-grid">
     <div class="f-card">
-      <div class="f-icon"><i data-lucide="book-open"></i></div>
+      <div class="f-icon"><i data-lucide="book-open" size="20"></i></div>
       <h4>Elektron Kundalik va Jurnal</h4>
       <p>Kunlik baholar, davomat, dars qoldirishlar va topshiriqlarning avtomatik hisobi.</p>
     </div>
 
     <div class="f-card">
-      <div class="f-icon"><i data-lucide="calendar"></i></div>
+      <div class="f-icon"><i data-lucide="calendar" size="20"></i></div>
       <h4>Aqlli Dars Jadvali</h4>
       <p>Sinflar va xonalar moslashuvi bo'yicha tuzilgan dinamik va o'zgarmas jadval.</p>
     </div>
 
     <div class="f-card">
-      <div class="f-icon"><i data-lucide="trophy"></i></div>
+      <div class="f-icon"><i data-lucide="trophy" size="20"></i></div>
       <h4>Olimpiada va Reyting</h4>
       <p>O'quvchilarning umumiy o'zlashtirish va olimpiada natijalari tahlili.</p>
     </div>
 
     <div class="f-card">
-      <div class="f-icon"><i data-lucide="smartphone"></i></div>
+      <div class="f-icon"><i data-lucide="smartphone" size="20"></i></div>
       <h4>PWA Mobil Tizim</h4>
       <p>Kompyuter va smartfonlarga ilova shaklida o'rnatib olish imkoniyati.</p>
     </div>
@@ -335,26 +325,26 @@ footer {
   <!-- YANGILIKLAR -->
   <div class="sec-title" id="news">
     <h3>Maktab Yangiliklari</h3>
-    <p>Sergeli TIM hayotidagi so'nggi muhim voqealar va e'lonlar</p>
+    <p>Sergeli TIM hayotidagi muhim voqealar</p>
   </div>
 
   <div class="news-grid">
     <div class="news-card">
       <span class="news-tag">E'lon</span>
-      <h4>Yangi O'quv Choraq Natijalari</h4>
-      <p>541 nafar o'quvchilarning choraklik reyting ko'rsatkichlari tizimga to'liq kiritildi.</p>
+      <h4>Yangi O'quv Choragi Natijalari</h4>
+      <p>541 nafar o'quvchilarning choraklik reyting ko'rsatkichlari tizimga kiritildi.</p>
     </div>
 
     <div class="news-card">
       <span class="news-tag" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">G'alaba</span>
       <h4>Fan Olimpiadasi Bosqichi</h4>
-      <p>Maktabimiz o'quvchilari tuman bosqichida faxrli o'rinlarni qo'lga kiritishdi.</p>
+      <p>O'quvchilarimiz tuman bosqichida faxrli o'rinlarni egallashdi.</p>
     </div>
 
     <div class="news-card">
       <span class="news-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">Yangilanish</span>
       <h4>Platforma Tizimi 2.0</h4>
-      <p>Sayt interfeysi va login bo'limlari tezligi 3 baravar optimallashtirildi.</p>
+      <p>Sayt interfeysi va login bo'limlari tezligi optimallashtirildi.</p>
     </div>
   </div>
 
@@ -368,39 +358,39 @@ footer {
     <!-- O'QUVCHI -->
     <div class="p-card student">
       <div>
-        <div class="p-icon"><i data-lucide="graduation-cap" size="32"></i></div>
+        <div class="p-icon"><i data-lucide="graduation-cap" size="26"></i></div>
         <h4>O'quvchi va Ota-ona</h4>
-        <p>Baholar, dars jadvallari, uy vazifalari va reytinglarni ko'rish bo'limi.</p>
+        <p>Baholar, dars jadvallari va reytinglarni ko'rish bo'limi.</p>
       </div>
       <a href="app/index.html" class="p-btn">
         <span>O'quvchi Kabineti</span>
-        <i data-lucide="arrow-right"></i>
+        <i data-lucide="arrow-right" size="18"></i>
       </a>
     </div>
 
     <!-- O'QITUVCHI -->
     <div class="p-card teacher">
       <div>
-        <div class="p-icon"><i data-lucide="presentation" size="32"></i></div>
+        <div class="p-icon"><i data-lucide="presentation" size="26"></i></div>
         <h4>O'qituvchilar</h4>
-        <p>Sinf jurnali, baholash, dars davomati va rejalarni boshqarish paneli.</p>
+        <p>Sinf jurnali, baholash va davomatni boshqarish paneli.</p>
       </div>
       <a href="teacher.html" class="p-btn">
         <span>O'qituvchi Kabineti</span>
-        <i data-lucide="arrow-right"></i>
+        <i data-lucide="arrow-right" size="18"></i>
       </a>
     </div>
 
     <!-- ADMIN -->
     <div class="p-card admin">
       <div>
-        <div class="p-icon"><i data-lucide="shield-check" size="32"></i></div>
+        <div class="p-icon"><i data-lucide="shield-check" size="26"></i></div>
         <h4>Administratsiya</h4>
-        <p>Maktab bazasi, 541 o'quvchi ma'lumotlari hamda sozlamalar paneli.</p>
+        <p>Maktab bazasi, 541 o'quvchi va tizim sozlamalari.</p>
       </div>
       <a href="admin.html" class="p-btn">
         <span>Admin Paneli</span>
-        <i data-lucide="arrow-right"></i>
+        <i data-lucide="arrow-right" size="18"></i>
       </a>
     </div>
   </div>
